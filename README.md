@@ -9,15 +9,15 @@ npm install value-chain --save
 
 ## api:
 
-const valueChain = require('value-chain');
-// common use:
-valueChain(data, chain, defaultValue);
-// set data:
-valueChain.set(data);
-// after set data, you can
-data.getValue(chain, defaultValue);
-data.getList(chain);
-data.getMap(chain);
+const valueChain = require('value-chain');<br>
+// common use:<br>
+valueChain(data, chain, defaultValue);<br>
+// set data:<br>
+valueChain.set(data);<br>
+// after set data, you can<br>
+data.getValue(chain, defaultValue);<br>
+data.getList(chain);<br>
+data.getMap(chain);<br>
 
 ## usage:
 
