@@ -65,6 +65,13 @@ describe('util value-chain', () => {
     profile.should.have.property('getValue').with.be.a.Function;
     profile.should.have.property('getList').with.be.a.Function;
     profile.should.have.property('getMap').with.be.a.Function;
-    profile.getList('features').should.be.instanceof(Array).and.have.lengthOf(2);
+
+    profile.getList('features').should.be.Array().and.have.lengthOf(2);
+  });
+
+  it('should not have getValue in plain Object', () => {
+    const plain = {};
+
+    should(plain).not.have.property('getValue');
   });
 });

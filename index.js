@@ -36,11 +36,11 @@ valueChain.set = obj => {
   if (!obj) {
     return obj;
   }
+
   // 扩展数据原型，增加getValue方法
-  const proto = Object.getPrototypeOf(obj);
-  proto.getValue = getValue;
-  proto.getList = getList;
-  proto.getMap = getMap;
+  Object.setPrototypeOf(obj, {
+    getValue, getList, getMap
+  });
 
   return obj;
 };
