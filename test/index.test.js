@@ -74,4 +74,14 @@ describe('util value-chain', () => {
 
     should(plain).not.have.property('getValue');
   });
+
+  it('should not change the data original prototype', () => {
+    const features = data.getList('user.profile.features');
+    console.log(features, features.map, Object.prototype.toString.call(features), '....')
+    features.should.have.property('sort').with.be.a.Function;
+    features.should.have.property('map').with.be.a.Function;
+    features.should.have.property('forEach').with.be.a.Function;
+    features.should.have.property('filter').with.be.a.Function;
+    features.should.have.property('reduce').with.be.a.Function;
+  });
 });
