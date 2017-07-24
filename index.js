@@ -1,11 +1,13 @@
 const log = require('t-log');
 
 function valueChain(data, chain, defaultVal) {
+  const oldLimit = Error.stackTraceLimit;
   const keys = chain.split('.');
   const l = keys.length;
   let i = 0;
   let value = data;
 
+  Error.stackTraceLimit = 8;
   try {
     for (; i < l; i++) {
       value = value[keys[i]];
@@ -13,6 +15,8 @@ function valueChain(data, chain, defaultVal) {
   } catch (e) {
     log.error(`Read value of ${chain} on '${keys[i]}' error:\n`, e.stack);
     value = defaultVal;
+  } finally {
+    Error.stackTraceLimit = oldLimit;
   }
 
   if (value === undefined || value === null) {
